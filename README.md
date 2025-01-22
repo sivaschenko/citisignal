@@ -4,9 +4,15 @@ This project boilerplate is for Edge Delivery Services projects that integrate w
 ## Documentation
 https://experienceleague.adobe.com/developer/commerce/storefront/
 
-## Environments
-- Preview: https://main--{repo}--{owner}.aem.page/
-- Live: https://main--{repo}--{owner}.aem.live/
+## Environments - Doc-based
+
+- Preview: https://main--citisignal-storefront--adobedevxsc.aem.page/
+- Live: https://main--citisignal-storefront--adobedevxsc.aem.live/
+
+## Environments - AEM UE + Crosswalk
+
+- Preview: https://main--{repo}--adobedevxsc.aem.page/
+- Live: https://main--{repo}--adobedevxsc.aem.live/
 
 ## Pre-requisites
 
@@ -47,7 +53,7 @@ npm run lint
 1. Add your Adobe Commerce SaaS configuration in the `configs.xlsx` sheet in your content repository.
 1. Install all dependencies using `npm i`.
 1. Start AEM Proxy: `npm run up` (opens your browser at `http://localhost:3000`)
-1. Open the `{repo}` directory in your favourite IDE and start coding :)
+1. Open the `citisignal-storefront` directory in your favourite IDE and start coding :)
 
 ## Changelog
 
