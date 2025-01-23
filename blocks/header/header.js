@@ -117,6 +117,40 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
   }
 }
 
+function addAnimation() {
+  window.addEventListener('scroll', () => {
+    const header = document.getElementsByClassName('header-nav-wrapper')[0];
+    const scrollPosition = window.scrollY;
+    const viewportWidth = window.innerWidth;
+
+    if (viewportWidth > 900) {
+      if (scrollPosition > 168) {
+        header.classList.add('minimized');
+      } else {
+        header.classList.remove('minimized');
+      }
+    } else {
+      header.classList.remove('minimized');
+    }
+  });
+}
+
+function setActiveTab() {
+  const currentPath = window.location.pathname;
+  const matchResult = currentPath.match(/^\/([^/]+)/);
+  const path = matchResult ? matchResult[1] : null;
+  const navTabLinks = document.querySelector('.nav-sections ul');
+
+  [...navTabLinks.children].forEach((tab) => {
+    const link = tab.querySelector('a');
+    const linkTitle = link.title.toLowerCase();
+
+    if (linkTitle === path || (linkTitle === 'shop' && ['products', 'equipment', 'search'].includes(path))) {
+      link.classList.add('active');
+    }
+  });
+}
+
 /**
  * loads and decorates the header, mainly the nav
  * @param {Element} block The header block element
@@ -277,9 +311,15 @@ export default async function decorate(block) {
   isDesktop.addEventListener('change', () => toggleMenu(nav, navSections, isDesktop.matches));
 
   const navWrapper = document.createElement('div');
-  navWrapper.className = 'nav-wrapper';
+  navWrapper.className = 'header-nav-wrapper';
   navWrapper.append(nav);
+
+  const topNav = navWrapper.querySelector('.nav-tools .default-content-wrapper');
+  block.prepend(topNav);
   block.append(navWrapper);
+
+  addAnimation();
+  setActiveTab();
 
   // TODO: Following statements added for demo purpose (Auth Drop-In)
   renderAuthCombine(
