@@ -24,7 +24,7 @@ export const priceFieldsFragment = `fragment priceFields on ProductViewPrice {
 export async function commerceEndpointWithQueryParams() {
   const urlWithQueryParams = new URL(await getConfigValue('commerce-endpoint'));
   // Set some query parameters for use as a cache-buster. No other purpose.
-  urlWithQueryParams.searchParams.append('ac-storecode', await getConfigValue('commerce.headers.cs.Magento-Store-Code'));
+  urlWithQueryParams.searchParams.append('ac-storecode', await getConfigValue('commerce-store-code'));
   return urlWithQueryParams;
 }
 
@@ -64,7 +64,7 @@ export async function performMonolithGraphQLQuery(query, variables, GET = true, 
 
   const headers = {
     'Content-Type': 'application/json',
-    Store: await getConfigValue('commerce.headers.cs.Magento-Store-View-Code'),
+    Store: await getConfigValue('commerce-store-view-code'),
   };
 
   if (USE_TOKEN) {
@@ -145,9 +145,24 @@ export function renderPrice(product, format, html = (strings, ...values) => stri
 /* PDP specific functionality */
 
 export function getSkuFromUrl() {
+  // const path = window.location.pathname;
+  // // const result = path.match(/\/products\/[\w|-]+\/([\w|-]+)$/);
+  // const path = path.match(/\/products\/(.+)$/);
+  // return result?.[1];
+
   const path = window.location.pathname;
-  const result = path.match(/\/products\/[\w|-]+\/([\w|-]+)$/);
-  return result?.[1];
+  let result;
+
+  if (path.startsWith('/experiments/')) {
+    const pathStr = path.match(/\/experiments\/([\w|-]+)\/([\w|-]+)\/([\w|-]+)$/);
+    result = pathStr?.[3];
+  }
+  if (path.startsWith('/products/')) {
+    const pathStr = path.match(/\/products\/(.+)$/);
+    result = pathStr?.[1];
+  }
+
+  return result;
 }
 
 export function getOptionsUIDsFromUrl() {
@@ -159,7 +174,7 @@ export async function trackHistory() {
     return;
   }
   // Store product view history in session storage
-  const storeViewCode = await getConfigValue('commerce.headers.cs.Magento-Store-View-Code');
+  const storeViewCode = await getConfigValue('commerce-store-view-code');
   window.adobeDataLayer.push((dl) => {
     dl.addEventListener('adobeDataLayer:change', (event) => {
       if (!event.productContext) {
