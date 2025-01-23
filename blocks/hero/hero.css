@@ -7,6 +7,30 @@ main .hero-container > div {
   max-width: var(--large-grid-layout);
 }
 
+/* Typography Styles */
+.hero h1 {
+  /* font-family: "Open Sans"; */
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 45px;
+}
+
+/* Paragraph Styles */
+.hero p {
+  margin: 2rem 0;
+}
+
+.hero h1,
+.hero h2,
+.hero h3,
+.hero h4,
+.hero h5,
+.hero h6 {
+  letter-spacing: 0.04em;
+  line-height: normal;
+}
+
+
 /* Hero Section Styles */
 .hero {
   position: relative;
@@ -61,29 +85,6 @@ main .hero-container > div {
 
 .hero.small p {
   margin: 1rem 0;
-}
-
-/* Typography Styles */
-.hero h1 {
-  /* font-family: "Open Sans"; */
-  font-size: 36px;
-  font-weight: 800;
-  line-height: 45px;
-}
-
-.hero h1,
-.hero h2,
-.hero h3,
-.hero h4,
-.hero h5,
-.hero h6 {
-  letter-spacing: 0.04em;
-  line-height: normal;
-}
-
-/* Paragraph Styles */
-.hero p {
-  margin: 2rem 0;
 }
 
 .hero div:nth-child(3) p:first-of-type {

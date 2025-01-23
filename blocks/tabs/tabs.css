@@ -14,7 +14,6 @@
   font-size: unset;
   font-weight: bold;
   line-height: unset;
-  text-align: initial;
   text-overflow: unset;
   overflow: unset;
   white-space: unset;
@@ -24,10 +23,12 @@
 }
 
 .tabs.block .tabs-list button:first-of-type {
+  /* stylelint-disable-next-line */
   border-radius: 18px 0 0 0;
 }
 
 .tabs.block .tabs-list button:last-of-type {
+  /* stylelint-disable-next-line */
   border-radius: 0 18px 0 0;
 }
 
@@ -45,7 +46,7 @@
 
 .tabs.block .tabs-panel {
   margin-top: -1px;
-  padding: 16px 16px;
+  padding: 16px;
   border: 1px solid var(--border-color);
   border-radius: 0 0 18px 18px;
   overflow: auto;

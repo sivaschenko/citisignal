@@ -23,7 +23,7 @@ import ProductGallery from '@dropins/storefront-pdp/containers/ProductGallery.js
 // Libs
 import { setJsonLd } from '../../scripts/commerce.js';
 import { fetchPlaceholders } from '../../scripts/aem.js';
-import initToast from './toast.js';
+// import initToast from './toast.js';
 
 // Initializers
 import { IMAGES_SIZES } from '../../scripts/initializers/pdp.js';

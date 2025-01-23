@@ -77,8 +77,8 @@ function buildHeroBlock(main) {
  */
 export function getTimestamp() {
   if (
-    (window.location.hostname === 'localhost' || window.location.hostname.endsWith('.hlx.page')) &&
-    window.sessionStorage.getItem('preview-date')
+    (window.location.hostname === 'localhost' || window.location.hostname.endsWith('.hlx.page'))
+    && window.sessionStorage.getItem('preview-date')
   ) {
     return Date.parse(window.sessionStorage.getItem('preview-date'));
   }

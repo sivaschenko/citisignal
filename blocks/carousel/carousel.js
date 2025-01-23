@@ -19,9 +19,9 @@ export function startInterval(block) {
       block.loadPercentage = percentage;
       indicator.style.width = `${percentage}%`;
       block.querySelectorAll('.carousel-slide-indicator > button').forEach((ind) => {
-        if (ind != indicator) ind.style.width = '0';
+        if (ind !== indicator) ind.style.width = '0';
       });
-      if (percentage == 0) {
+      if (percentage === 0) {
         block.dataset.activeSlide = (parseInt(block.dataset.activeSlide, 10) + 1) % slides.length;
         showSlide(block, block.dataset.activeSlide);
 
@@ -78,7 +78,7 @@ export function showSlide(block, slideIndex = 0) {
   if (slideIndex >= slides.length) realSlideIndex = 0;
   const activeSlide = slides[realSlideIndex];
   block.querySelectorAll('.carousel-slide-indicator > button').forEach((ind, index) => {
-    if (index != slideIndex) ind.style.width = '0';
+    if (index !== slideIndex) ind.style.width = '0';
   });
   activeSlide.querySelectorAll('a').forEach((link) => link.removeAttribute('tabindex'));
   block.querySelector('.carousel-slides').scrollTo({
@@ -127,10 +127,10 @@ function bindEvents(block) {
     slideObserver.observe(slide);
   });
   // on hover stop interval
-  block.addEventListener('mouseenter', (e) => {
+  block.addEventListener('mouseenter', () => {
     block.state = 'paused';
   });
-  block.addEventListener('mouseleave', (e) => {
+  block.addEventListener('mouseleave', () => {
     block.state = 'playing';
   });
 }
@@ -189,11 +189,11 @@ export default async function decorate(block) {
     slideNavButtons.classList.add('carousel-navigation-buttons');
     slideNavButtons.innerHTML = `
       <button type="button" class= "slide-prev" aria-label="${
-        placeholders.previousSlide || 'Previous Slide'
-      }"></button>
-      <button type="button" class="slide-next" aria-label="${
-        placeholders.nextSlide || 'Next Slide'
-      }"></button>
+  placeholders.previousSlide || 'Previous Slide'
+}"></button>
+<button type="button" class="slide-next" aria-label="${
+  placeholders.nextSlide || 'Next Slide'
+}"></button>
     `;
 
     container.append(slideNavButtons);
@@ -209,7 +209,7 @@ export default async function decorate(block) {
     if (classes && classes.length > 0) {
       slide.classList.add(...classes);
     }
-    console.log(row.querySelector(':scope > div'));
+    // console.log(row.querySelector(':scope > div'));
     moveInstrumentation(row, slide);
     slidesWrapper.append(slide);
 
