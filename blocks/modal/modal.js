@@ -1,3 +1,4 @@
+import { loadFragment } from '../fragment/fragment.js';
 import { loadCSS, buildBlock } from '../../scripts/aem.js';
 
 export default async function createModal(contentNodes) {
@@ -70,4 +71,14 @@ export default async function createModal(contentNodes) {
       document.body.classList.add('modal-open');
     },
   };
+}
+
+export async function openModal(fragmentUrl) {
+  const path = fragmentUrl.startsWith('http')
+    ? new URL(fragmentUrl, window.location).pathname
+    : fragmentUrl;
+
+  const fragment = await loadFragment(path);
+  const { showModal } = await createModal(fragment.childNodes);
+  showModal();
 }

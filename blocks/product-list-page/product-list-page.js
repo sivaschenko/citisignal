@@ -1,21 +1,27 @@
 import { readBlockConfig } from '../../scripts/aem.js';
-import { getConfigValue } from '../../scripts/configs.js';
+import { getConfigValue, getAemAuthorEnv, getAemContentPath } from '../../scripts/configs.js';
 
 export default async function decorate(block) {
-  // eslint-disable-next-line import/no-absolute-path, import/no-unresolved
-  await import('/scripts/widgets/search.js');
+  const isAemAuthor = getAemAuthorEnv();
+  if (isAemAuthor) {
+    let authorContentPath = getAemContentPath();
+    authorContentPath = `${authorContentPath}.resource/scripts/widgets/search.js`;
+    await import(`${authorContentPath}`);
+  } else {
+    // eslint-disable-next-line import/no-absolute-path, import/no-unresolved
+    await import('/scripts/widgets/search.js');
+  }
 
   const { category, urlpath, type } = readBlockConfig(block);
   block.textContent = '';
 
   const storeDetails = {
-    environmentId: await getConfigValue('commerce.headers.cs.Magento-Environment-Id'),
+    environmentId: await getConfigValue('commerce-environment-id'),
     environmentType: (await getConfigValue('commerce-endpoint')).includes('sandbox') ? 'testing' : '',
-    apiKey: await getConfigValue('commerce.headers.cs.x-api-key'),
-    apiUrl: await getConfigValue('commerce-endpoint'),
-    websiteCode: await getConfigValue('commerce.headers.cs.Magento-Website-Code'),
-    storeCode: await getConfigValue('commerce.headers.cs.Magento-Store-Code'),
-    storeViewCode: await getConfigValue('commerce.headers.cs.Magento-Store-View-Code'),
+    apiKey: await getConfigValue('commerce-x-api-key'),
+    websiteCode: await getConfigValue('commerce-website-code'),
+    storeCode: await getConfigValue('commerce-store-code'),
+    storeViewCode: await getConfigValue('commerce-store-view-code'),
     config: {
       pageSize: 8,
       perPageConfig: {
@@ -42,12 +48,11 @@ export default async function decorate(block) {
       },
     },
     context: {
-      customerGroup: await getConfigValue('commerce.headers.cs.Magento-Customer-Group'),
+      customerGroup: await getConfigValue('commerce-customer-group'),
     },
-    route: ({ sku, urlKey }) => {
-      const a = new URL(window.location.origin);
-      a.pathname = `/products/${urlKey}/${sku}`;
-      return a.toString();
+    route: ({ sku }) => {
+      const base = urlpath === 'plans' ? '/products/plan/' : '/products/';
+      return `${base}${sku}`;
     },
   };
 
