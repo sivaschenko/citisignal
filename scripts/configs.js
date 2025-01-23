@@ -105,7 +105,7 @@ export const getConfigValue = async (configParam, environment) => {
 export const getHeaders = async (scope, environment) => {
   const env = environment || calcEnvironment();
   const config = await getConfigForEnvironment(env);
-  const configElements = config.data.filter((el) => el?.key.includes(`headers.${scope}`));
+  const configElements = config.data.filter((el) => el?.key.includes('commerce-'));
 
   return configElements.reduce((obj, item) => {
     let { key } = item;

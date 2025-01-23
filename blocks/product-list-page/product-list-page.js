@@ -53,6 +53,10 @@ export default async function decorate(block) {
     route: ({ sku }) => {
       const base = urlpath === 'plans' ? '/products/plan/' : '/products/';
       return `${base}${sku}`;
+
+      // const a = new URL(window.location.origin);
+      // a.pathname = `/products/${urlKey}/${sku}`;
+      // return a.toString();
     },
   };
 
