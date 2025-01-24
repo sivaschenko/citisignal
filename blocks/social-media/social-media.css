@@ -18,6 +18,13 @@ footer .wrapper .section.social-media-container img {
   box-sizing: content-box;
 }
 
+footer .wrapper .section.social-media-container .button-container a {
+  padding: 2px;
+  padding-inline: 0;
+  background-color: transparent;
+  border-radius: 0;
+}
+
 /* Media Queries */
 @media (width <= 900px) {
   footer .wrapper .section.social-media-container {

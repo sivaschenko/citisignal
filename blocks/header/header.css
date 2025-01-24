@@ -341,7 +341,7 @@ header nav .nav-sections ul > li > a:hover {
 }
 
 /* tools */
-header nav .nav-panel {
+header nav .nav-tools-panel {
   z-index: 100;
   position: absolute;
   box-shadow: var(--shape-shadow-2);
@@ -353,7 +353,7 @@ header nav .nav-panel {
   box-sizing: border-box;
 }
 
-header nav .nav-panel--show {
+header nav .nav-tools-panel--show {
   display: block;
 }
 
@@ -532,7 +532,7 @@ header .header > .default-content-wrapper {
 
 header .header > .default-content-wrapper p {
   margin: 0;
-  padding: 3px 16px;
+  padding: 3px 10px;
   display: flex;
   justify-content: center;
   align-items: center;
