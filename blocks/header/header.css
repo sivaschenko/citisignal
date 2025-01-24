@@ -532,7 +532,7 @@ header .header > .default-content-wrapper {
 
 header .header > .default-content-wrapper p {
   margin: 0;
-  padding: 3px 16px;
+  padding: 3px 10px;
   display: flex;
   justify-content: center;
   align-items: center;
