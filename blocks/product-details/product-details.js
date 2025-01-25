@@ -22,7 +22,7 @@ import ProductGallery from '@dropins/storefront-pdp/containers/ProductGallery.js
 
 // Libs
 import { setJsonLd } from '../../scripts/commerce.js';
-import { fetchPlaceholders } from '../../scripts/aem.js';
+import { fetchPlaceholders, readBlockConfig } from '../../scripts/aem.js';
 // import initToast from './toast.js';
 
 // Initializers
@@ -30,6 +30,9 @@ import { IMAGES_SIZES } from '../../scripts/initializers/pdp.js';
 import '../../scripts/initializers/cart.js';
 
 export default async function decorate(block) {
+  const blockConfig = readBlockConfig(block);
+  block.innerHTML = '';
+
   // eslint-disable-next-line no-underscore-dangle
   const product = events._lastEvent?.['pdp/data']?.payload ?? null;
   const labels = await fetchPlaceholders();
@@ -139,7 +142,7 @@ export default async function decorate(block) {
         try {
           addToCart.setProps((prev) => ({
             ...prev,
-            children: labels.Custom?.AddingToCart?.label,
+            children: blockConfig['add-to-cart-btn-text'] || labels.Custom?.AddingToCart?.label,
             disabled: true,
           }));
 
@@ -194,7 +197,7 @@ export default async function decorate(block) {
     UI.render(Button, {
       icon: Icon({ source: 'Heart' }),
       variant: 'secondary',
-      'aria-label': labels.Custom?.AddToWishlist?.label,
+      'aria-label': blockConfig['add-to-wishlist-btn-text'] || labels.Custom?.AddToWishlist?.label,
       onClick: async () => {
         try {
           addToWishlist.setProps((prev) => ({
