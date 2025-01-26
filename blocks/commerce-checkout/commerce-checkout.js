@@ -52,7 +52,8 @@ import { render as CheckoutProvider } from '@dropins/storefront-checkout/render.
 // Adyen Dropin Modules
 // import * as adyenApi from '@dropins/adyen-checkout-extension/api.js';
 // import { render as adyenProvider } from '@dropins/adyen-checkout-extension/render.js';
-// import AdyenPaymentMethod from '@dropins/adyen-checkout-extension/containers/AdyenPaymentMethod.js';
+// import AdyenPaymentMethod
+//   from '@dropins/adyen-checkout-extension/containers/AdyenPaymentMethod.js';
 
 // Order Dropin Modules
 import * as orderApi from '@dropins/storefront-order/api.js';

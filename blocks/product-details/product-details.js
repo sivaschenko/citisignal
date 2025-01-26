@@ -22,7 +22,7 @@ import ProductGallery from '@dropins/storefront-pdp/containers/ProductGallery.js
 
 // Libs
 import { setJsonLd } from '../../scripts/commerce.js';
-import { fetchPlaceholders, readBlockConfig } from '../../scripts/aem.js';
+import { fetchPlaceholders } from '../../scripts/aem.js';
 import initToast from './toast.js';
 
 // Initializers
@@ -30,7 +30,7 @@ import { IMAGES_SIZES } from '../../scripts/initializers/pdp.js';
 import '../../scripts/initializers/cart.js';
 
 export default async function decorate(block) {
-  const blockConfig = readBlockConfig(block);
+  // const blockConfig = readBlockConfig(block); //add import readBlockConfig - aem.js
   block.innerHTML = '';
 
   // eslint-disable-next-line no-underscore-dangle
