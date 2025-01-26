@@ -109,7 +109,7 @@ export default async function decorate(block) {
 
     // Gallery (Desktop)
     pdpRendered.render(ProductGallery, {
-      controls: 'thumbnailsColumn',
+      controls: 'thumbnailsRow',
       arrows: true,
       peak: true,
       gap: 'small',
@@ -195,7 +195,7 @@ export default async function decorate(block) {
     UI.render(Button, {
       icon: Icon({ source: 'Heart' }),
       variant: 'secondary',
-      'aria-label': blockConfig['add-to-wishlist-btn-text'] || labels.Custom?.AddToWishlist?.label,
+      'aria-label': labels.Custom?.AddToWishlist?.label,
       onClick: async () => {
         try {
           addToWishlist.setProps((prev) => ({

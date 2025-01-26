@@ -1,7 +1,7 @@
 /* stylelint-disable selector-class-pattern */
 
 .commerce-cart {
-  padding: var(--spacing-large) 0;
+  /* padding: var(--spacing-large) 0; */
 }
 
 .cart__wrapper {

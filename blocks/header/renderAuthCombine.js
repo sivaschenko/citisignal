@@ -169,8 +169,8 @@ const renderAuthCombine = (navSections, toggleMenu) => {
   if (getCookie('auth_dropin_firstname')) return;
 
   const navListEl = navSections.querySelector('.default-content-wrapper > ul');
-
   const listItems = navListEl.querySelectorAll('.default-content-wrapper > ul > li');
+
   const accountLi = Array.from(listItems).find((li) => li.textContent.includes('Account'));
   const accountLiItems = accountLi.querySelectorAll('ul > li');
   const authCombineLink = accountLiItems[accountLiItems.length - 1];
