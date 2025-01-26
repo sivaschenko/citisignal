@@ -23,7 +23,7 @@ import ProductGallery from '@dropins/storefront-pdp/containers/ProductGallery.js
 // Libs
 import { setJsonLd } from '../../scripts/commerce.js';
 import { fetchPlaceholders, readBlockConfig } from '../../scripts/aem.js';
-// import initToast from './toast.js';
+import initToast from './toast.js';
 
 // Initializers
 import { IMAGES_SIZES } from '../../scripts/initializers/pdp.js';
@@ -142,7 +142,7 @@ export default async function decorate(block) {
         try {
           addToCart.setProps((prev) => ({
             ...prev,
-            children: blockConfig['add-to-cart-btn-text'] || labels.Custom?.AddingToCart?.label,
+            children: labels.Custom?.AddingToCart?.label,
             disabled: true,
           }));
 
@@ -155,12 +155,10 @@ export default async function decorate(block) {
             const { addProductsToCart } = await import('@dropins/storefront-cart/api.js');
             await addProductsToCart([{ ...values }]);
 
-            // // toast notification
-            // if (next.valid && addToCartResponse) {
-            //   const { quantity } = next.values;
-            //   const productMetaDescription = next.data.metaDescription;
-            //   initToast(quantity, productMetaDescription);
-            // }
+            // init Toast
+            const { quantity, sku } = values;
+            const productItem = sku.split('/')[0];
+            initToast(quantity, productItem);
           }
 
           // reset any previous alerts if successful
