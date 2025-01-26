@@ -23,13 +23,16 @@ import ProductGallery from '@dropins/storefront-pdp/containers/ProductGallery.js
 // Libs
 import { setJsonLd } from '../../scripts/commerce.js';
 import { fetchPlaceholders } from '../../scripts/aem.js';
-// import initToast from './toast.js';
+import initToast from './toast.js';
 
 // Initializers
 import { IMAGES_SIZES } from '../../scripts/initializers/pdp.js';
 import '../../scripts/initializers/cart.js';
 
 export default async function decorate(block) {
+  // const blockConfig = readBlockConfig(block); //add import readBlockConfig - aem.js
+  block.innerHTML = '';
+
   // eslint-disable-next-line no-underscore-dangle
   const product = events._lastEvent?.['pdp/data']?.payload ?? null;
   const labels = await fetchPlaceholders();
@@ -106,7 +109,7 @@ export default async function decorate(block) {
 
     // Gallery (Desktop)
     pdpRendered.render(ProductGallery, {
-      controls: 'thumbnailsColumn',
+      controls: 'thumbnailsRow',
       arrows: true,
       peak: true,
       gap: 'small',
@@ -152,12 +155,10 @@ export default async function decorate(block) {
             const { addProductsToCart } = await import('@dropins/storefront-cart/api.js');
             await addProductsToCart([{ ...values }]);
 
-            // // toast notification
-            // if (next.valid && addToCartResponse) {
-            //   const { quantity } = next.values;
-            //   const productMetaDescription = next.data.metaDescription;
-            //   initToast(quantity, productMetaDescription);
-            // }
+            // init Toast
+            const { quantity, sku } = values;
+            const productItem = sku.split('/')[0];
+            initToast(quantity, productItem);
           }
 
           // reset any previous alerts if successful

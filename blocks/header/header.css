@@ -526,13 +526,13 @@ header .header > .default-content-wrapper {
   top: 0;
   width: 100%;
   padding: 0 1rem;
-  gap: 10px;
+  gap: 2rem;
   box-sizing: border-box;
 }
 
 header .header > .default-content-wrapper p {
   margin: 0;
-  padding: 3px 10px;
+  padding: 3px 5px;
   display: flex;
   justify-content: center;
   align-items: center;
