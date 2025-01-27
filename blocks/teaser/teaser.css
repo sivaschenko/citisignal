@@ -1,6 +1,6 @@
 .teaser {
   display: flex;
-  background: #000;
+  /* background: #000; */
   align-items: stretch;
   max-height: 240px;
   border-radius: 20px;
@@ -20,6 +20,7 @@
   border-radius: 20px;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
+  box-shadow: 0 0 0 2px transparent;
 }
 
 .teaser-img-col img {
@@ -59,6 +60,10 @@
   flex-direction: column;
   justify-content: center;
   gap: 1em;
+  background: #000;
+  border-radius: inherit;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 .teaser > div:not(.teaser-img-col) > div {
@@ -115,5 +120,11 @@
   .teaser .teaser > div:not(.teaser-img-col) > div {
     text-align: center;
     padding: 5rem 7rem;
+  }
+
+  .teaser > div:not(.teaser-img-col) {
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
   }
 }
