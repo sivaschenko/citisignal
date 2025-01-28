@@ -1,6 +1,5 @@
 .teaser {
   display: flex;
-  /* background: #000; */
   align-items: stretch;
   max-height: 240px;
   border-radius: 20px;
@@ -117,14 +116,14 @@
     border-top-left-radius: 0;
   }
 
-  .teaser .teaser > div:not(.teaser-img-col) > div {
-    text-align: center;
-    padding: 5rem 7rem;
-  }
-
   .teaser > div:not(.teaser-img-col) {
     border-top-left-radius: 20px;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
+  }
+
+  .teaser .teaser > div:not(.teaser-img-col) > div {
+    text-align: center;
+    padding: 5rem 7rem;
   }
 }
