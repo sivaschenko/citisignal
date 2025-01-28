@@ -177,7 +177,7 @@
 /* toast notification */
 #toast-container {
   position: fixed;
-  z-index: 25;
+  z-index: 60;
   right: 15px;
   top: 10px;
   display: flex;
