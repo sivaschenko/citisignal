@@ -24,7 +24,7 @@ function renderSignIn(element) {
   })(element);
 }
 
-export function renderAuthDropdown(navTools) {
+export function renderAuthDropdown() {
   const dropdownElement = document.createRange().createContextualFragment(`
  <div class="dropdown-wrapper nav-tools-wrapper">
     <button type="button" class="nav-dropdown-button" aria-haspopup="dialog" aria-expanded="false" aria-controls="login-modal"></button>
@@ -37,15 +37,16 @@ export function renderAuthDropdown(navTools) {
     </div>
  </div>`);
 
-  navTools.append(dropdownElement);
+  const topNav = document.querySelector('.header > .default-content-wrapper');
+  topNav.insertBefore(dropdownElement, topNav.lastElementChild);
 
-  const authDropDownPanel = navTools.querySelector('.nav-auth-menu-panel');
-  const authDropDownMenuList = navTools.querySelector(
+  const authDropDownPanel = topNav.querySelector('.nav-auth-menu-panel');
+  const authDropDownMenuList = topNav.querySelector(
     '.authenticated-user-menu',
   );
-  const authDropinContainer = navTools.querySelector('#auth-dropin-container');
-  const loginButton = navTools.querySelector('.nav-dropdown-button');
-  const logoutButtonElement = navTools.querySelector(
+  const authDropinContainer = topNav.querySelector('#auth-dropin-container');
+  const loginButton = topNav.querySelector('.nav-dropdown-button');
+  const logoutButtonElement = topNav.querySelector(
     '.authenticated-user-menu > li > button',
   );
 
@@ -85,25 +86,33 @@ export function renderAuthDropdown(navTools) {
   const updateDropDownUI = (isAuthenticated) => {
     const getUserTokenCookie = getCookie('auth_dropin_user_token');
     const getUserNameCookie = getCookie('auth_dropin_firstname');
+    const container = topNav.querySelector('.nav-auth-menu-panel');
 
     if (isAuthenticated || getUserTokenCookie) {
       authDropDownMenuList.style.display = 'block';
       authDropinContainer.style.display = 'none';
       loginButton.textContent = `Hi, ${getUserNameCookie}`;
+
+      container.classList.add('is-authenticated');
     } else {
       authDropDownMenuList.style.display = 'none';
       authDropinContainer.style.display = 'block';
+      container.classList.remove('is-authenticated');
+
       loginButton.innerHTML = `
-      <svg
-          width="25"
-          height="25"
-          viewBox="0 0 24 24"
-          aria-label="My Account"
-          >
-          <g fill="none" stroke="#000000" stroke-width="1.5">
-          <circle cx="12" cy="6" r="4"></circle>
-          <path d="M20 17.5c0 2.485 0 4.5-8 4.5s-8-2.015-8-4.5S7.582 13 12 13s8 2.015 8 4.5Z"></path></g></svg>
-        `;
+          <svg width="16px" height="16px" viewBox="0 0 24 24" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#ffffff">
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+              <g id="SVGRepo_iconCarrier">
+                  <defs>
+                      <!-- Updated stroke width -->
+                      <style>.cls-1{fill:none;stroke:#fff;stroke-miterlimit:10;stroke-width:1px;}</style>
+                  </defs>
+                  <circle class="cls-1" cx="12" cy="7.25" r="5.73"></circle>
+                  <path class="cls-1" d="M1.5,23.48l.37-2.05A10.3,10.3,0,0,1,12,13h0a10.3,10.3,0,0,1,10.13,8.45l.37,2.05"></path>
+              </g>
+          </svg>
+         Account`;
     }
   };
 
