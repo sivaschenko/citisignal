@@ -6,13 +6,13 @@ https://experienceleague.adobe.com/developer/commerce/storefront/
 
 ## Environments - Doc-based
 
-- Preview: https://main--citisignal-storefront--adobedevxsc.aem.page/
-- Live: https://main--citisignal-storefront--adobedevxsc.aem.live/
+- Preview: https://main--citisignal--aabsites.aem.page/
+- Live: https://main--citisignal--aabsites.aem.live/
 
 ## Environments - AEM UE + Crosswalk
 
-- Preview: https://main--{repo}--adobedevxsc.aem.page/
-- Live: https://main--{repo}--adobedevxsc.aem.live/
+- Preview: https://main--{repo}--aabsites.aem.page/
+- Live: https://main--{repo}--aabsites.aem.live/
 
 ## Pre-requisites
 
