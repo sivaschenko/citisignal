@@ -94,7 +94,7 @@ const getConfigForEnvironment = async (environment) => {
 export const getConfigValue = async (configParam, environment) => {
   const env = environment || calcEnvironment();
   const config = await getConfigForEnvironment(env);
-  const configElements = config.data;
+  const configElements = config.data || config[env].data;
   return configElements.find((c) => c.key === configParam)?.value;
 };
 
