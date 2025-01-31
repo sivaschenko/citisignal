@@ -50,7 +50,7 @@ npm run lint
 
 ## Local development
 
-1. Install the Helix CLI: sudo npm install -g @adobe/helix-cli
+1. Install the Helix CLI: `sudo npm install -g @adobe/aem-cli`
 1. Create a new repository based on the `aem-boilerplate-commerce` template and add a mountpoint in the `fstab.yaml`
 1. Add the [AEM Code Sync GitHub App](https://github.com/apps/aem-code-sync) to the repository
 1. Add your Adobe Commerce SaaS configuration in the `configs.xlsx` sheet in your content repository.
