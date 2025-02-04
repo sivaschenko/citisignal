@@ -246,12 +246,14 @@ header nav .nav-sections ul > li > p > a {
   padding: 1em 1.2em !important;
   background-color: unset !important;
   border-radius: unset !important;
+  color: #000 !important;
 }
 
 header nav .nav-sections ul > li > p > a.active,
 header nav .nav-sections ul > li > p > a:hover {
   text-decoration: none;
   background-color: var(--color-neutral-200) !important;
+  color: var(--color-brand-700) !important;
 }
 
 @media (width >= 900px) {

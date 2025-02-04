@@ -364,6 +364,7 @@ main pre {
   padding-inline: 30px;
   background-color: #000;
   border-radius: 30px;
+  color: #fff;
 }
 
 /* links */
@@ -400,6 +401,7 @@ button {
   font: var(--type-base-font-family);
 }
 
+a.button,
 button.button-primary,
 a.button-primary,
 a.button.error-button-home {
@@ -528,7 +530,7 @@ main img {
 
 /* sections */
 main .section {
-  padding: 2rem 15px;
+  padding: 1rem 15px 0;
 }
 
 main .section.extra-width > div {
@@ -545,7 +547,7 @@ main .section.black-text {
 
 @media (width <= 768px) {
   main .section {
-    padding: 1.5rem 15px;
+    padding: 1rem 15px 0;
   }
 }
 
