@@ -146,6 +146,10 @@ main .hero-container > div {
     margin: 1rem 0 2rem;
   }
 
+  .hero .button-container a {
+    margin: 0 auto;
+  }
+
   .hero > div:nth-child(1) {
     display: none;
   }
@@ -167,12 +171,12 @@ main .hero-container > div {
     margin-left: unset;
   }
 
-  .hero div:nth-child(3) p:first-of-type {
-    padding-right: 0;
+  .hero div:nth-child(3) > div p.button-container a {
+    margin: 0 auto;
   }
 
-  .hero .button-container a {
-    margin: 0 auto;
+  .hero div:nth-child(3) p:first-of-type {
+    padding-right: 0;
   }
 }
 

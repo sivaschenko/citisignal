@@ -360,11 +360,16 @@ main pre {
 
 .block a:any-link.button {
   width: fit-content;
-  padding: 10px;
+  padding: 8px;
   padding-inline: 30px;
   background-color: #000;
   border-radius: 30px;
   color: #fff;
+  font-weight: 400;
+}
+
+.block a:any-link.button:hover {
+  text-decoration: solid underline var(--color-brand-700);
 }
 
 /* links */
@@ -401,7 +406,7 @@ button {
   font: var(--type-base-font-family);
 }
 
-a.button,
+a.button:not(header a.button),
 button.button-primary,
 a.button-primary,
 a.button.error-button-home {
@@ -531,6 +536,10 @@ main img {
 /* sections */
 main .section {
   padding: 1rem 15px 0;
+}
+
+main .section:last-of-type {
+  padding-bottom: 1rem;
 }
 
 main .section.extra-width > div {

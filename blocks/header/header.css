@@ -251,7 +251,7 @@ header nav .nav-sections ul > li > p > a {
 
 header nav .nav-sections ul > li > p > a.active,
 header nav .nav-sections ul > li > p > a:hover {
-  text-decoration: none;
+  text-decoration: none !important;
   background-color: var(--color-neutral-200) !important;
   color: var(--color-brand-700) !important;
 }
