@@ -160,6 +160,9 @@ export function getSkuFromUrl() {
     const pathStr = path.match(/\/products\/(.+)$/);
     result = pathStr?.[1];
   }
+  if (path.startsWith('/products/default')) {
+    result = 'samsung-galaxy-S22-ultra';
+  }
 
   return result;
 }
