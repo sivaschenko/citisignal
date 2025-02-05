@@ -1,5 +1,5 @@
 export default function decorate(block) {
-  // setup image teser
+  // setup image teaser
   block.querySelector('p > a')?.classList.add('teaser-link');
   [...block.children].forEach((row) => {
     const pic = row.querySelector('picture');
