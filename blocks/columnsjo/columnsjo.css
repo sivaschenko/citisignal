@@ -162,18 +162,3 @@
     padding: 4%;
   }
 }
-
-/* columns - product-card */
-.columnsjo.product-card > div > div {
-  background-color: #000;
-  color: #fff;
-  padding: 3.5rem;
-}
-
-.columnsjo.product-card > div > div img {
-  min-height: unset;
-}
-/* 
-@media (width >= 900px) {
-
-} */
