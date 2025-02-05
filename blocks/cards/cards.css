@@ -21,7 +21,6 @@
   border-radius: 20px;
   padding: 3.5rem;
   text-align: center;
-  /* min-height: 296px; */
   box-sizing: border-box;
   background-color: #000;
   color: #fff;
@@ -78,7 +77,7 @@
 }
 
 /* cards - row-reverse */
-.cards.row .cards-card-body {
+.cards.row-reverse .cards-card-body {
   flex-direction: row-reverse;
   gap: 3rem;
 }
