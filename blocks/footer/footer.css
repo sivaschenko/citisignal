@@ -28,6 +28,10 @@ footer a {
   color: var(--color-neutral-50) !important;
 }
 
+footer br {
+  display: none;
+}
+
 footer .wrapper {
   display: flex;
   align-items: flex-start;
@@ -50,6 +54,10 @@ footer .wrapper .section.site-links {
 
 footer .wrapper .section.site-links .default-content-wrapper {
   margin: 0 0 auto;
+}
+
+footer .wrapper .section.site-links .default-content-wrapper p {
+  margin: 2rem 0 0;
 }
 
 footer .wrapper .section.site-links .default-content-wrapper ol,
