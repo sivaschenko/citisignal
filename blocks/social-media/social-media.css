@@ -23,6 +23,7 @@ footer .wrapper .section.social-media-container .button-container a {
   padding-inline: 0;
   background-color: transparent;
   border-radius: 0;
+  margin: 0;
 }
 
 /* Media Queries */
