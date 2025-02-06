@@ -579,6 +579,21 @@ header .header > .default-content-wrapper p:last-of-type img {
 }
 
 /* auth modal */
+header .nav-auth-modal-wrapper.not-authenticated {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(136, 33, 244, 0.55);
+}
+
+header .nav-auth-modal-wrapper.not-authenticated .nav-tools-panel {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 header .nav-auth-menu-panel .dropin-design .auth-sign-in > div {
   border-radius: 4px;
 }

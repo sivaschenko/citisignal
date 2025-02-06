@@ -193,6 +193,6 @@
 
 @media (width >= 1280px) {
   .recommended-products .slider-container[data-step="sm"] .slider-item {
-      max-width: 238px;
+      max-width: 265px;
   }
 }
