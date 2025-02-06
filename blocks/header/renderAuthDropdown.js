@@ -28,19 +28,21 @@ export function renderAuthDropdown() {
   const dropdownElement = document.createRange().createContextualFragment(`
  <div class="dropdown-wrapper nav-tools-wrapper">
     <button type="button" class="nav-dropdown-button" aria-haspopup="dialog" aria-expanded="false" aria-controls="login-modal"></button>
-    <div class="nav-auth-menu-panel nav-tools-panel">
-      <div id="auth-dropin-container"></div>
-      <ul class="authenticated-user-menu">
-         <li><a href="/customer/account">My Account</a></li>
-          <li><button>Logout</button></li>
-      </ul>
+    <div class="nav-auth-modal-wrapper">
+      <div class="nav-auth-menu-panel nav-tools-panel">
+        <div id="auth-dropin-container"></div>
+        <ul class="authenticated-user-menu">
+          <li><a href="/customer/account">My Account</a></li>
+            <li><button>Logout</button></li>
+        </ul>
+      </div>
     </div>
  </div>`);
 
   const topNav = document.querySelector('.header > .default-content-wrapper');
   topNav.insertBefore(dropdownElement, topNav.lastElementChild);
 
-  const authDropDownPanel = topNav.querySelector('.nav-auth-menu-panel');
+  let authDropDownPanel = topNav.querySelector('.nav-auth-menu-panel');
   const authDropDownMenuList = topNav.querySelector(
     '.authenticated-user-menu',
   );
@@ -50,10 +52,21 @@ export function renderAuthDropdown() {
     '.authenticated-user-menu > li > button',
   );
 
+  let wrapperElement = topNav.querySelector('.nav-auth-modal-wrapper');
+
   authDropDownPanel.addEventListener('click', (e) => e.stopPropagation());
 
   async function toggleDropDownAuthMenu(state) {
+    authDropDownPanel = topNav.querySelector('.nav-auth-menu-panel');
+    wrapperElement = topNav.querySelector('.nav-auth-modal-wrapper');
     const show = state ?? !authDropDownPanel.classList.contains('nav-tools-panel--show');
+    const isAuthenticated = authDropDownPanel.classList.contains('is-authenticated');
+
+    if (!isAuthenticated) {
+      wrapperElement.classList.add('not-authenticated');
+    } else {
+      wrapperElement.classList.remove('not-authenticated');
+    }
 
     authDropDownPanel.classList.toggle('nav-tools-panel--show', show);
     authDropDownPanel.setAttribute('role', 'dialog');
@@ -70,6 +83,7 @@ export function renderAuthDropdown() {
 
     if (!clickOnDropDownPanel && !clickOnLoginButton) {
       await toggleDropDownAuthMenu(false);
+      wrapperElement.classList.remove('not-authenticated');
     }
   });
 
@@ -117,7 +131,9 @@ export function renderAuthDropdown() {
   };
 
   events.on('authenticated', (isAuthenticated) => {
+    toggleDropDownAuthMenu(isAuthenticated);
     updateDropDownUI(isAuthenticated);
+    wrapperElement.classList.remove('not-authenticated');
   });
 
   updateDropDownUI();
