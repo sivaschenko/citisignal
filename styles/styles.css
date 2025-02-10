@@ -210,6 +210,12 @@ main {
   flex: 1;
 }
 
+@media (width >= 768px) {
+  main {
+    min-height: calc(100vh - 362px);
+  }
+}
+
 @media (width < 768px) {
   main {
     margin-top: 105px;
