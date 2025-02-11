@@ -608,6 +608,23 @@ async function loadBlock(block) {
   return block;
 }
 
+function addSectionMetadata(section) {
+  const colors = ['background-color', 'text-color']; //Add to this list for other custom section metadata parameters
+
+  colors.forEach((color) => {
+    const dataAttr = section?.getAttribute(`data-${color}`);
+    const block = section?.querySelector('div.block');
+
+    if (dataAttr && block) {
+      if (color === 'background-color') {
+        block.style.background = dataAttr;
+      } else if (color === 'text-color') {
+        block.style.color = dataAttr;
+      }
+    }
+  });
+}
+
 /**
  * Decorates a block.
  * @param {Element} block The block element
@@ -623,6 +640,8 @@ function decorateBlock(block) {
     blockWrapper.classList.add(`${shortBlockName}-wrapper`);
     const section = block.closest('.section');
     if (section) section.classList.add(`${shortBlockName}-container`);
+    // custom
+    addSectionMetadata(section);
   }
 }
 
