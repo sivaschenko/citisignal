@@ -159,7 +159,6 @@ export default async function decorate(block) {
             // Plans flow
             // initModal(next, state, blockConfig); //outdated: does not support new drop-in code
 
-
             // // init Toast
             // const { quantity, sku } = values;
             // const productItem = sku.split('/')[0];

@@ -609,7 +609,7 @@ async function loadBlock(block) {
 }
 
 function addSectionMetadata(section) {
-  const colors = ['background-color', 'text-color']; //Add to this list for other custom section metadata parameters
+  const colors = ['background-color', 'text-color']; // Add to this list for other custom section metadata parameters
 
   colors.forEach((color) => {
     const dataAttr = section?.getAttribute(`data-${color}`);
