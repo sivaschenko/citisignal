@@ -7,6 +7,12 @@
   min-height: 700px;
 }
 
+@media (width <= 768px) {
+  .product-list-page {
+      min-height: auto;
+  }
+}
+
 .product-list-page .ds-sdk-product-item__image img {
   aspect-ratio: 185 / 230;
   object-fit: contain;

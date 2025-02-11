@@ -1,1 +1,4 @@
-/* stylelint-disable no-empty-source */
+/* stylelint-disable */
+.dropin-design .cart-mini-cart__products{
+  padding-bottom: 0 !important;
+}
