@@ -625,7 +625,7 @@ function addSectionMetadata(section) {
     const classList = [];
 
     [...section.attributes].forEach(({ name, value }) => {
-      if (name.startsWith('data-') && name !== 'data-section-status') {
+      if (name.startsWith('data-') && name !== 'data-section-status' && name !== 'data-date') {
         const key = name.replace(/^data-/, ''); // Remove "data-" prefix
 
         if (metadataMap[key]) {
