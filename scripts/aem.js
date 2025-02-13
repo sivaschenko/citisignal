@@ -609,18 +609,38 @@ async function loadBlock(block) {
 }
 
 function addSectionMetadata(section) {
-  const colors = ['background-color', 'text-color']; // Add to this list for other custom section metadata parameters
+  if (!section) return;
 
-  colors.forEach((color) => {
-    const dataAttr = section?.getAttribute(`data-${color}`);
-    const block = section?.querySelector('div.block');
+  const metadataMap = {
+    'background-color': 'background',
+    'text-color': 'color',
+    'min-height': 'minHeight',
+  };
 
-    if (dataAttr && block) {
-      if (color === 'background-color') {
-        block.style.background = dataAttr;
-      } else if (color === 'text-color') {
-        block.style.color = dataAttr;
+  const blocks = section.querySelectorAll('div.block');
+  if (!blocks.length) return;
+
+  // Process each block inside the section
+  blocks.forEach((block) => {
+    const classList = [];
+
+    [...section.attributes].forEach(({ name, value }) => {
+      if (name.startsWith('data-') && name !== 'data-section-status') {
+        const key = name.replace(/^data-/, ''); // Remove "data-" prefix
+
+        if (metadataMap[key]) {
+          // Apply styles if the key exists in metadataMap
+          block.style[metadataMap[key]] = value;
+        } else {
+          // Convert unknown data-* attributes into class names
+          classList.push(`${key}-${value}`);
+        }
       }
+    });
+
+    // Add the generated classes to the block
+    if (classList.length) {
+      block.classList.add(...classList);
     }
   });
 }

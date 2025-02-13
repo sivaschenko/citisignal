@@ -1,3 +1,4 @@
 export default function decorate(block) {
-  console.log("card block: ", block);
+  const wrapper = block.querySelector('div > div');
+  wrapper.classList.add('wrapper');
 }
