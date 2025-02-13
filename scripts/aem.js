@@ -645,12 +645,25 @@ function decorateBlock(block) {
   }
 }
 
+function decorateGridLayout(block) {
+  const div = document.createElement('div');
+  div.classList.add('grid-wrapper');
+  [...block.children].forEach((el) => {
+    const isDefaultContentWrapper = el.matches('.default-content-wrapper');
+    if (!isDefaultContentWrapper) {
+      div.append(el);
+    }
+  });
+  block.append(div);
+}
+
 /**
  * Decorates all blocks in a container element.
  * @param {Element} main The container element
  */
 function decorateBlocks(main) {
   main.querySelectorAll('div.section > div > div').forEach(decorateBlock);
+  main.querySelectorAll('div.section.grid').forEach(decorateGridLayout);
 }
 
 /**

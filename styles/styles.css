@@ -262,6 +262,16 @@ h6 {
   margin: 0;
 }
 
+.section .default-content-wrapper h1,
+.section .default-content-wrapper h2,
+.section .default-content-wrapper h3,
+.section .default-content-wrapper h4,
+.section .default-content-wrapper h5,
+.section .default-content-wrapper h6 {
+  padding-bottom: 1rem;
+}
+
+
 /* .section .default-content-wrapper h1::after,
 .section .default-content-wrapper h2::after,
 .section .default-content-wrapper h3::after,
