@@ -615,6 +615,7 @@ function addSectionMetadata(section) {
     'background-color': 'background',
     'text-color': 'color',
     'min-height': 'minHeight',
+    'overlay-background-color': 'background',
   };
 
   const blocks = section.querySelectorAll('div.block');
@@ -635,6 +636,13 @@ function addSectionMetadata(section) {
           // Convert unknown data-* attributes into class names
           classList.push(`${key}-${value}`);
         }
+      }
+
+      // overlay
+      if (name === 'data-overlay-background-color') {
+        const key = name.replace(/^data-/, ''); // Remove "data-" prefix
+        const overlayElement = block.querySelector('div:nth-child(2) > div');
+        overlayElement.style[metadataMap[key]] = value;
       }
     });
 
