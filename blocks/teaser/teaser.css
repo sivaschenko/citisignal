@@ -28,7 +28,7 @@
   display: flex;
   justify-content: center;
   overflow: hidden;
-  flex: 1 1 40%;
+  flex: 1 1 45%;
   border-radius: 20px;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
@@ -55,7 +55,7 @@
 }
 
 .teaser > div > div:not(.teaser-img-col) {
-  flex: 1 1 60%;
+  flex: 1 1 55%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -67,7 +67,7 @@
 
 .teaser > div > div:not(.teaser-img-col) > div {
   box-sizing: border-box;
-  padding: 3rem 5rem;
+  padding: 3rem 3rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -80,7 +80,7 @@
 }
 
 .teaser > div > div:not(.teaser-img-col) h3 {
-  font-size: 28px;
+  font-size: 32px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
@@ -98,7 +98,7 @@
 }
 
 .teaser > div > div:not(.teaser-img-col) p:not(.button-container) {
-  font-size: 18px;
+  font-size: 22px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -136,6 +136,10 @@
 
   .teaser-img-col img {
     max-height: 150px;
+  }
+
+  .teaser .wrapper {
+    flex-direction: column;
   }
 }
 
