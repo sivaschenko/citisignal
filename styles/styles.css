@@ -662,7 +662,7 @@ main .section.author .content-wrapper p:nth-child(2) {
   margin-bottom: 1rem;
 }
 
-main .section.grid .grid-wrapper {
+main .section.grid-row .grid-wrapper {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(23%, 1fr));
   grid-auto-rows: 1fr;
@@ -670,12 +670,24 @@ main .section.grid .grid-wrapper {
   grid-gap: 1rem;
 }
 
-main .section.grid .grid-wrapper > div {
+main .section.grid-row .grid-wrapper > div {
+  width: 100%;
+}
+
+main .section.grid-column .grid-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: auto;
+  width: 100%;
+  grid-gap: 1rem;
+}
+
+main .section.grid-column .grid-wrapper > div {
   width: 100%;
 }
 
 @media (width <= 900px) {
-  main .section.grid .grid-wrapper {
+  main .section.grid-row .grid-wrapper {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -685,7 +697,7 @@ main .section.grid .grid-wrapper > div {
     flex-direction: column;
   }
 
-  main .section.grid .grid-wrapper {
+  main .section.grid-row .grid-wrapper {
     grid-template-columns: repeat(1, 1fr);
   }
 }

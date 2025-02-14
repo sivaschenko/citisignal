@@ -691,7 +691,7 @@ function decorateGridLayout(block) {
  */
 function decorateBlocks(main) {
   main.querySelectorAll('div.section > div > div').forEach(decorateBlock);
-  main.querySelectorAll('div.section.grid').forEach(decorateGridLayout);
+  main.querySelectorAll('div.section.grid-row, div.section.grid-column').forEach(decorateGridLayout);
 }
 
 /**
