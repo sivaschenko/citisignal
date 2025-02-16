@@ -22,7 +22,7 @@ import ProductGallery from '@dropins/storefront-pdp/containers/ProductGallery.js
 
 // Libs
 import { setJsonLd } from '../../scripts/commerce.js';
-import { fetchPlaceholders } from '../../scripts/aem.js';
+import { fetchPlaceholders, getMetadata, readBlockConfig } from '../../scripts/aem.js';
 import initToast from './toast.js';
 
 // Initializers
@@ -30,12 +30,23 @@ import { IMAGES_SIZES } from '../../scripts/initializers/pdp.js';
 import '../../scripts/initializers/cart.js';
 
 export default async function decorate(block) {
-  // const blockConfig = readBlockConfig(block); //add import readBlockConfig - aem.js
+  const isEnhanced = getMetadata('pdp') === 'enhanced';
+  const blockConfig = readBlockConfig(block);
+  const carouselLayout = blockConfig?.['carousel-layout'];
+  const control = blockConfig?.control;
   block.innerHTML = '';
 
   // eslint-disable-next-line no-underscore-dangle
   const product = events._lastEvent?.['pdp/data']?.payload ?? null;
   const labels = await fetchPlaceholders();
+
+  // PDP enhancements
+  if (isEnhanced) {
+    const main = document.querySelector('main');
+    main.classList.add('enhance-pdp');
+
+    // change fragment layout
+  }
 
   // Layout
   const fragment = document.createRange().createContextualFragment(`
@@ -109,7 +120,11 @@ export default async function decorate(block) {
 
     // Gallery (Desktop)
     pdpRendered.render(ProductGallery, {
-      controls: 'thumbnailsRow',
+      controls: {
+        dots: 'dots',
+        'thumbnails-row': 'thumbnailsRow',
+        'thumbnails-column': 'thumbnailsColumn',
+      }[control] || 'dots',
       arrows: true,
       peak: true,
       gap: 'small',
@@ -233,6 +248,12 @@ export default async function decorate(block) {
   events.on('pdp/valid', (valid) => {
     // update add to cart button disabled state based on product selection validity
     addToCart.setProps((prev) => ({ ...prev, disabled: !valid }));
+  }, { eager: true });
+
+  events.on('pdp/data', (data) => {
+    if (data.optionUIDs && carouselLayout === 'quad') {
+      block.classList.add('gallery-quad');
+    }
   }, { eager: true });
 
   // Set JSON-LD and Meta Tags

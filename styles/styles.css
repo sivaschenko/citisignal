@@ -210,6 +210,10 @@ main {
   flex: 1;
 }
 
+main.enhance-pdp {
+  background: linear-gradient(3deg, #DBBCFC -6.01%, #FFF 99.66%);
+}
+
 @media (width >= 768px) {
   main {
     min-height: calc(100vh - 362px);
