@@ -22,7 +22,7 @@ import ProductGallery from '@dropins/storefront-pdp/containers/ProductGallery.js
 
 // Libs
 import { setJsonLd } from '../../scripts/commerce.js';
-import { fetchPlaceholders, getMetadata, readBlockConfig } from '../../scripts/aem.js';
+import { fetchPlaceholders, readBlockConfig } from '../../scripts/aem.js';
 import initToast from './toast.js';
 
 // Initializers
@@ -30,8 +30,8 @@ import { IMAGES_SIZES } from '../../scripts/initializers/pdp.js';
 import '../../scripts/initializers/cart.js';
 
 export default async function decorate(block) {
-  const isEnhanced = getMetadata('pdp') === 'enhanced';
   const blockConfig = readBlockConfig(block);
+  const isFeatured = blockConfig?.featured;
   const carouselLayout = blockConfig?.['carousel-layout'];
   const control = blockConfig?.control;
   block.innerHTML = '';
@@ -40,39 +40,69 @@ export default async function decorate(block) {
   const product = events._lastEvent?.['pdp/data']?.payload ?? null;
   const labels = await fetchPlaceholders();
 
+  let fragment;
   // PDP enhancements
-  if (isEnhanced) {
-    const main = document.querySelector('main');
-    main.classList.add('enhance-pdp');
+  if (isFeatured) {
+    const body = document.querySelector('body');
+    body.classList.add('featured-pdp');
+    block.classList.add('featured-pdp');
 
     // change fragment layout
-  }
-
-  // Layout
-  const fragment = document.createRange().createContextualFragment(`
-    <div class="product-details__wrapper">
-      <div class="product-details__alert"></div>
-      <div class="product-details__left-column">
-        <div class="product-details__gallery"></div>
-      </div>
-      <div class="product-details__right-column">
+    fragment = document.createRange().createContextualFragment(`
+      <div class="product-details__wrapper">
+        <div class="product-details__alert"></div>
         <div class="product-details__header"></div>
-        <div class="product-details__price"></div>
-        <div class="product-details__gallery"></div>
-        <div class="product-details__short-description"></div>
-        <div class="product-details__configuration">
-          <div class="product-details__options"></div>
-          <div class="product-details__quantity"></div>
-          <div class="product-details__buttons">
-            <div class="product-details__buttons__add-to-cart"></div>
-            <div class="product-details__buttons__add-to-wishlist"></div>
+        <div class="product-details__left-column">
+          <div class="product-details__gallery"></div>
+        </div>
+        <div class="product-details__product-description-wrapper">
+          <div class="product-details__featured-left-column">
+            <div class="product-details__description"></div>
+            <div class="product-details__attributes"></div>
+          </div>
+          <div class="product-details__right-column">
+            <div class="product-details__price"></div>
+            <div class="product-details__gallery"></div>
+            <div class="product-details__short-description"></div>
+            <div class="product-details__configuration">
+              <div class="product-details__options"></div>
+              <div class="product-details__quantity"></div>
+              <div class="product-details__buttons">
+                <div class="product-details__buttons__add-to-cart"></div>
+                <div class="product-details__buttons__add-to-wishlist"></div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="product-details__description"></div>
-        <div class="product-details__attributes"></div>
       </div>
-    </div>
-  `);
+    `);
+  } else {
+    // Layout
+    fragment = document.createRange().createContextualFragment(`
+      <div class="product-details__wrapper">
+        <div class="product-details__alert"></div>
+        <div class="product-details__left-column">
+          <div class="product-details__gallery"></div>
+        </div>
+        <div class="product-details__right-column">
+          <div class="product-details__header"></div>
+          <div class="product-details__price"></div>
+          <div class="product-details__gallery"></div>
+          <div class="product-details__short-description"></div>
+          <div class="product-details__configuration">
+            <div class="product-details__options"></div>
+            <div class="product-details__quantity"></div>
+            <div class="product-details__buttons">
+              <div class="product-details__buttons__add-to-cart"></div>
+              <div class="product-details__buttons__add-to-wishlist"></div>
+            </div>
+          </div>
+          <div class="product-details__description"></div>
+          <div class="product-details__attributes"></div>
+        </div>
+      </div>
+    `);
+  }
 
   const $alert = fragment.querySelector('.product-details__alert');
   const $gallery = fragment.querySelector('.product-details__gallery');
