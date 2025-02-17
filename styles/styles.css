@@ -836,6 +836,12 @@ main .section.grid-column .grid-wrapper > div {
   color: var(--color-neutral-50);
 }
 
+/* .dropin-design .dropin-button:disabled {
+  background: transparent;
+  color: var(--color-neutral-50);
+  opacity: 0.35;
+} */
+
 /* Hide minicart SKU */
 .dropin-design .dropin-cart-item__sku {
   display: none;
