@@ -190,7 +190,7 @@
 
 .product-details.featured-pdp .pdp-carousel__slide > img {
   max-height: 850px;
-  border-radius: 20px;
+  border-radius: 8px;
   background: var(--loyalty-promotion);
   box-sizing: border-box;
   padding: 1rem;
@@ -236,7 +236,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  gap: 1.5rem;
+  gap: 1rem;
   width: 100%;
   /* overflow: visible; */
 }
@@ -252,7 +252,8 @@
 }
 
 .product-details.gallery-quad .pdp-carousel__slide > img {
-  max-height: 400px;
+  max-height: 295px;
+  border-radius: 8px;
 }
 
 .product-details.gallery-quad .pdp-carousel__slide--horizontal {

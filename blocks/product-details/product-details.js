@@ -31,7 +31,7 @@ import '../../scripts/initializers/cart.js';
 
 export default async function decorate(block) {
   const blockConfig = readBlockConfig(block);
-  const isFeatured = blockConfig?.featured;
+  const isFeatured = blockConfig?.featured === 'true';
   const carouselLayout = blockConfig?.['carousel-layout'];
   const control = blockConfig?.control;
   block.innerHTML = '';
