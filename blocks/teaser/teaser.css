@@ -20,7 +20,7 @@
 .teaser .wrapper {
   display: flex;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1238px;
   margin: 0 auto;
 }
 
@@ -28,7 +28,7 @@
   display: flex;
   justify-content: center;
   overflow: hidden;
-  flex: 1 1 40%;
+  flex: 1 1 43%;
   border-radius: 20px;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
@@ -38,12 +38,10 @@
 .teaser-img-col img {
   height: 100%;
   width: 100%;
-  max-height: 240px;
+  max-height: 290px;
   object-fit: contain;
-}
-
-.teaser-img-col > div {
   padding: 1rem;
+  box-sizing: border-box;
 }
 
 .teaser.align-right .teaser-img-col {
@@ -55,7 +53,7 @@
 }
 
 .teaser > div > div:not(.teaser-img-col) {
-  flex: 1 1 60%;
+  flex: 1 1 57%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -98,7 +96,7 @@
 }
 
 .teaser > div > div:not(.teaser-img-col) p:not(.button-container) {
-  font-size: 18px;
+  font-size: 20px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -126,6 +124,7 @@
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
     flex: unset;
+    order: 2;
   }
 
   .teaser > div > div:not(.teaser-img-col) > div {
@@ -135,7 +134,11 @@
   }
 
   .teaser-img-col img {
-    max-height: 150px;
+    max-height: 155px;
+  }
+
+  .teaser .wrapper {
+    flex-direction: column;
   }
 }
 
@@ -146,4 +149,55 @@
 
 .teaser.promo > div:not(.teaser-img-col) {
   border-radius: 15px;
+}
+
+/* teaser - background-image */
+.teaser.background-image {
+  background-color: unset;
+}
+
+.teaser.background-image > .wrapper {
+  position: relative;
+  display: block;
+  max-width: unset;
+}
+
+.teaser.background-image > .wrapper div > picture {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  object-fit: cover;
+  box-sizing: border-box;
+  bottom: 0;
+}
+
+.teaser.background-image > .wrapper div > picture img {
+  object-fit: cover;
+  border-radius: 20px;
+  max-height: unset;
+  padding: 0;
+}
+
+.teaser.background-image > .wrapper .teaser-img-col {
+  flex: unset;
+  padding-top: 0;
+}
+
+.teaser.background-image > .wrapper > div:not(.teaser-img-col) {
+  flex: unset;
+  background-color: var(--primary-color);
+  border-radius: 20px;
+  height: 100%;
+  max-width: 40%;
+  margin-left: auto;
+}
+
+@media (width <= 900px) {
+  .teaser.background-image {
+    min-height: auto !important;
+  }
+
+  .teaser.background-image > .wrapper > div:not(.teaser-img-col) {
+    max-width: 100%;
+  }
 }
