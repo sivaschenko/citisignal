@@ -53,7 +53,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 1em;
+  /* gap: 1em; */
   border-radius: inherit;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
@@ -84,6 +84,7 @@
   line-height: normal;
   letter-spacing: 0.96px;
   width: 100%;
+  margin-bottom: 1rem;
 }
 
 .teaser > div > div:not(.teaser-img-col) h3 a {
