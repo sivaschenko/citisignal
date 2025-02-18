@@ -24,6 +24,10 @@
   margin: 0;
 }
 
+.card p.button-container {
+  margin-top: 2rem;
+}
+
 .card .icon {
   height: 58px;
   width: auto;
