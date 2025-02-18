@@ -383,7 +383,7 @@ main pre {
   white-space: pre;
 }
 
-.block a:any-link.button {
+a:any-link.button {
   width: fit-content;
   padding: 8px;
   padding-inline: 30px;
@@ -393,7 +393,7 @@ main pre {
   font-weight: 400;
 }
 
-.block a:any-link.button:hover {
+a:any-link.button:hover {
   text-decoration: solid underline var(--color-brand-700);
 }
 

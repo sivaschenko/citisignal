@@ -95,6 +95,10 @@
   letter-spacing: inherit;
 }
 
+.teaser > div > div:not(.teaser-img-col) p.button-container {
+  margin: 0;
+}
+
 .teaser > div > div:not(.teaser-img-col) p:not(.button-container) {
   font-size: 20px;
   font-style: normal;
