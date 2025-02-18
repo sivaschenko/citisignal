@@ -397,6 +397,13 @@ a:any-link.button:hover {
   text-decoration: solid underline var(--color-brand-700);
 }
 
+a:any-link.button:not(.primary,.secondary) {
+  display: block;
+  padding: 1rem 0;
+  background-color: unset;
+  color: inherit;
+}
+
 /* links */
 a:any-link {
   color: var(--color-black-100);
