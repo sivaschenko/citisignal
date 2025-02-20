@@ -17,16 +17,6 @@
 }
 
 /* Block dividers */
-.checkout__block.checkout__heading .dropin-header-container {
-  gap: var(--spacing-xsmall);
-}
-
-.checkout__block.checkout__heading .dropin-header-container .dropin-divider {
-  max-width: 88px;
-  width: 100%;
-  border-top: 2px solid var(--primary-color);
-}
-
 .checkout__shipping-form {
   padding-top: var(--spacing-xbig);
   border-top: var(--shape-border-width-3) solid var(--color-neutral-400);
@@ -232,16 +222,6 @@
   grid-column-gap: var(--grid-4-gutters);
   margin-bottom: var(--spacing-xbig);
   padding-top: var(--spacing-xxlarge);
-}
-
-.order-confirmation .dropin-header-container {
-  row-gap: var(--spacing-xsmall);
-}
-
-.order-confirmation .dropin-header-container .dropin-divider {
-  max-width: 88px;
-  width: 100%;
-  border-top: 2px solid var(--primary-color);
 }
 
 .order-confirmation__main {

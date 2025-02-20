@@ -76,7 +76,8 @@
   color: var(--color-black-100);
 }
 
-.dropin-design .cart-cart-summary-list__heading .dropin-divider {
+.dropin-design .cart-cart-summary-list__heading .dropin-divider,
+.dropin-design .cart-order-summary__heading .dropin-divider {
   max-width: 88px;
   width: 100%;
   border-top: 2px solid var(--primary-color);
