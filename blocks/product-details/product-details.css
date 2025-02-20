@@ -355,6 +355,10 @@
   top: 0;
 }
 
+.toast .close-icon:hover {
+  cursor: pointer;
+}
+
 .toast .toast-wrapper {
   position: relative;
 }
