@@ -46,8 +46,6 @@ export default async function decorate(block) {
   let fragment;
   // PDP enhancements
   if (isFeatured) {
-    const body = document.querySelector('body');
-    body.classList.add('featured-pdp');
     block.classList.add('featured-pdp');
 
     // change fragment layout
@@ -301,6 +299,11 @@ export default async function decorate(block) {
     },
     { eager: true },
   );
+
+  if (isFeatured) {
+    const body = document.querySelector('body');
+    body.classList.add('featured-pdp');
+  }
 
   return Promise.resolve();
 }
