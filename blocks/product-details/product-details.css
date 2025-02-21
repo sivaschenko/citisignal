@@ -223,13 +223,14 @@
 }
 
 /* gallery quad */
-.product-details.gallery-quad .pdp-carousel {
-  --flex-carousel: unset !important;
-}
-
 .product-details.gallery-quad .pdp-carousel > div:not(.pdp-carousel__wrapper),
 .product-details.gallery-quad .pdp-carousel > button {
   display: none;
+}
+
+.product-details.gallery-quad .pdp-overlay .pdp-carousel > div:not(.pdp-carousel__wrapper),
+.product-details.gallery-quad .pdp-overlay .pdp-carousel > button {
+  display: flex;
 }
 
 .product-details.gallery-quad .pdp-carousel--main-image-controls .pdp-carousel__wrapper {
